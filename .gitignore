@@ -1,0 +1,10 @@
+*.o
+*~
+*.diff
+.*.swp
+ringfs
+tests
+example
+tags
+html/
+*.sim
