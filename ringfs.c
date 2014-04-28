@@ -263,7 +263,7 @@ int ringfs_scan(struct ringfs *fs)
     while (!_loc_equal(&fs->read, &fs->write)) {
         uint32_t status;
         _slot_get_status(fs, &fs->read, &status);
-        if (status == SLOT_ERASED)
+        if (status == SLOT_VALID)
             break;
 
         _loc_advance_slot(fs, &fs->read);

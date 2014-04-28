@@ -129,6 +129,18 @@ START_TEST(test_ringfs_scan)
     ck_assert_int_eq(fs2.cursor.sector, 0);
     ck_assert_int_eq(fs2.cursor.slot, 0);
 
+    /* now insert some objects */
+    ck_assert(ringfs_append(&fs2, (int[]) { 0x11 }) == 0);
+    ck_assert(ringfs_append(&fs2, (int[]) { 0x22 }) == 0);
+    ck_assert(ringfs_append(&fs2, (int[]) { 0x33 }) == 0);
+
+    /* rescan */
+    printf("## ringfs_scan()\n");
+    ck_assert(ringfs_scan(&fs2) == 0);
+
+    /* make sure the objects are there */
+    ck_assert(ringfs_count_exact(&fs2) == 3);
+
     /* scan should fail if we supply a different version */
     struct ringfs fs3;
     printf("## ringfs_init()\n");
