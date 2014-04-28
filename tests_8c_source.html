@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -146,19 +147,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="tests_8c.html#ad48c2ccaeef1d504cf00f68aa5cb78e1">   61</a></span>&#160;<span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="flashsim_8c.html#structflashsim">flashsim</a> *<a class="code" href="tests_8c.html#ad48c2ccaeef1d504cf00f68aa5cb78e1">sim</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="tests_8c.html#a6cac49bbd6af69b09b58427a557ad6b9">   63</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="tests_8c.html#a6cac49bbd6af69b09b58427a557ad6b9">op_sector_erase</a>(<span class="keywordtype">int</span> address)</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="tests_8c.html#a3c198d98cc1e392cd62838001d829827">   63</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="tests_8c.html#a3c198d98cc1e392cd62838001d829827">op_sector_erase</a>(<span class="keywordtype">int</span> address)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="flashsim_8c.html#a22e20b22d6ea78e1264e920c2be735c3">flashsim_sector_erase</a>(sim, address);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="tests_8c.html#add25641bea623700ada2badbb819f689">   69</a></span>&#160;ssize_t <a class="code" href="tests_8c.html#add25641bea623700ada2badbb819f689">op_program</a>(<span class="keywordtype">int</span> address, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="tests_8c.html#aa24d3a5e8628d9236281f56edd1d6493">   69</a></span>&#160;<span class="keyword">static</span> ssize_t <a class="code" href="tests_8c.html#aa24d3a5e8628d9236281f56edd1d6493">op_program</a>(<span class="keywordtype">int</span> address, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="flashsim_8c.html#a9705afb0088832e7e0a327143818671d">flashsim_program</a>(sim, address, data, size);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="tests_8c.html#a2d25f61b8c86b820f0f1eb4096466baf">   75</a></span>&#160;ssize_t <a class="code" href="tests_8c.html#a2d25f61b8c86b820f0f1eb4096466baf">op_read</a>(<span class="keywordtype">int</span> address, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>)</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="tests_8c.html#a20e51e6b53442c049c508a71a111e996">   75</a></span>&#160;<span class="keyword">static</span> ssize_t <a class="code" href="tests_8c.html#a20e51e6b53442c049c508a71a111e996">op_read</a>(<span class="keywordtype">int</span> address, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="flashsim_8c.html#ad10fad9341f65afa442333683b4912e9">flashsim_read</a>(sim, address, data, size);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">size</a>;</div>
@@ -169,9 +170,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    .sector_offset = 3,</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    .sector_count = 13,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    .sector_erase = <a class="code" href="tests_8c.html#a6cac49bbd6af69b09b58427a557ad6b9">op_sector_erase</a>,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    .program = <a class="code" href="tests_8c.html#add25641bea623700ada2badbb819f689">op_program</a>,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    .read = <a class="code" href="tests_8c.html#a2d25f61b8c86b820f0f1eb4096466baf">op_read</a>,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    .sector_erase = <a class="code" href="tests_8c.html#a3c198d98cc1e392cd62838001d829827">op_sector_erase</a>,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    .program = <a class="code" href="tests_8c.html#aa24d3a5e8628d9236281f56edd1d6493">op_program</a>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    .read = <a class="code" href="tests_8c.html#a20e51e6b53442c049c508a71a111e996">op_read</a>,</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="tests_8c.html#a91eba67e27ae84c5605a4c31ae390483">   91</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_format)</div>
@@ -215,171 +216,269 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    ck_assert_int_eq(fs2.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.sector, 0);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    ck_assert_int_eq(fs2.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 0);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">/* scan should fail if we supply a different version */</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs3;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs3, &amp;flash, 0x00000043, 4);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_scan()\n&quot;</span>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a>(&amp;fs3) != 0);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;END_TEST</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">/* now insert some objects */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs2, (<span class="keywordtype">int</span>[]) { 0x11 }) == 0);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs2, (<span class="keywordtype">int</span>[]) { 0x22 }) == 0);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs2, (<span class="keywordtype">int</span>[]) { 0x33 }) == 0);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">/* rescan */</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_scan()\n&quot;</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a>(&amp;fs2) == 0);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="tests_8c.html#a4fc681d8c45d618db785aad4ddd15a5f">  141</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_append)</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_append\n&quot;</span>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_append.sim&quot;</span>, 65536*16, 65536);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">/* first format a filesystem */</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_format()\n&quot;</span>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a>(&amp;fs);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">/* make sure the objects are there */</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs2) == 3);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">/* scan should fail if we supply a different version */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs3;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs3, &amp;flash, 0x00000043, 4);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_scan()\n&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a>(&amp;fs3) != 0);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;END_TEST</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">/* now we&#39;re brave and we write some data */</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_append()\n&quot;</span>);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="tests_8c.html#a4fc681d8c45d618db785aad4ddd15a5f">  153</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_append)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_append\n&quot;</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_append.sim&quot;</span>, 65536*16, 65536);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="comment">/* make sure the write head has advanced */</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a>.slot, i+1);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">/* now we fetch at it. */</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordtype">int</span> obj;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="comment">/* make sure the cursor head has advanced */</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, i+1);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">/* there should be no data left */</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) &lt; 0);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">/* test the rewind. */</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gae8bbdf169e339a7ab1103f3499eb54d5">ringfs_rewind</a>(&amp;fs) == 0);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 0);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">/* try to read the objects once again. */</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;END_TEST</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="tests_8c.html#aabd79e6a860423a2581acd5fecd4d0d4">  188</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_discard)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;{</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_discard\n&quot;</span>);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_append.sim&quot;</span>, 65536*16, 65536);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_format()\n&quot;</span>);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a>(&amp;fs);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">/* write some records */</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;4; i++) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_append()\n&quot;</span>);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="comment">/* read some of them */</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">int</span> obj;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;2; i++) {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">/* discard whatever was read */</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a>(&amp;fs) == 0);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">/* make sure we&#39;re consistent */</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">read</a>.slot, 2);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 2);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a>.slot, 4);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">/* read the rest of the records */</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=2; i&lt;4; i++) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">/* discard them */</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a>(&amp;fs) == 0);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">read</a>.slot, 4);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 4);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">/* first format a filesystem */</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_format()\n&quot;</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a>(&amp;fs);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">/* now we&#39;re brave and we write some data */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_append()\n&quot;</span>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment">/* make sure the write head has advanced */</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a>.slot, i+1);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">/* now we fetch at it. */</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">int</span> obj;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment">/* make sure the cursor head has advanced */</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, i+1);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="comment">/* there should be no data left */</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) &lt; 0);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">/* test the rewind. */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gae8bbdf169e339a7ab1103f3499eb54d5">ringfs_rewind</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 0);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">/* try to read the objects once again. */</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;END_TEST</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="tests_8c.html#aabd79e6a860423a2581acd5fecd4d0d4">  200</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_discard)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_discard\n&quot;</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_discard.sim&quot;</span>, 65536*16, 65536);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_init()\n&quot;</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    printf(<span class="stringliteral">&quot;## ringfs_format()\n&quot;</span>);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a>(&amp;fs);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">/* write some records */</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;4; i++) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_append()\n&quot;</span>);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">/* read some of them */</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">int</span> obj;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;2; i++) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">/* discard whatever was read */</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">/* make sure we&#39;re consistent */</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">read</a>.slot, 2);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 2);</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a>.slot, 4);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;END_TEST</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">  232</a></span>&#160;Suite *<a class="code" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    Suite *s = suite_create (<span class="stringliteral">&quot;ringfs&quot;</span>);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    TCase *tc;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    tc = tcase_create(<span class="stringliteral">&quot;flashsim&quot;</span>);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    tcase_add_test(tc, test_flashsim);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    suite_add_tcase(s, tc);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    tc = tcase_create(<span class="stringliteral">&quot;ringfs&quot;</span>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    tcase_add_test(tc, test_ringfs_format);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    tcase_add_test(tc, test_ringfs_scan);</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    tcase_add_test(tc, test_ringfs_append);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    tcase_add_test(tc, test_ringfs_discard);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    suite_add_tcase(s, tc);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  251</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">int</span> number_failed;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    Suite *s = <a class="code" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a>();</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    SRunner *sr = srunner_create(s);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    srunner_run_all(sr, CK_NORMAL);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    number_failed = srunner_ntests_failed(sr);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    srunner_free(sr);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">return</span> (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">/* vim: set ts=4 sw=4 et: */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment">/* read the rest of the records */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=2; i&lt;4; i++) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        printf(<span class="stringliteral">&quot;## ringfs_fetch()\n&quot;</span>);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">/* discard them */</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">read</a>.slot, 4);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">cursor</a>.slot, 4);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    ck_assert_int_eq(fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a>.slot, 4);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;END_TEST</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="tests_8c.html#a96fc066bae1e8c8af7b2948f461ec9cc">  244</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_capacity)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;{</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_capacity\n&quot;</span>);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_capacity.sim&quot;</span>, 65536*16, 65536);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="group__ringfs__api.html#a871746d1eb09b597649a4b18d222e6ad">slots_per_sector</a> = (65536-8)/(4+4);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">int</span> sectors = 13;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gad204b6f523276f612ce8a7888849a02d">ringfs_capacity</a>(&amp;fs), (sectors-1) * slots_per_sector);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;END_TEST</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="tests_8c.html#a41c7db150708878c3bfb17edf881afec">  258</a></span>&#160;<a class="code" href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a>(test_ringfs_count)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    printf(<span class="stringliteral">&quot;# test_ringfs_count\n&quot;</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    sim = <a class="code" href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a>(<span class="stringliteral">&quot;ringfs_count.sim&quot;</span>, 65536*16, 65536);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">int</span> obj;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">struct </span><a class="code" href="group__ringfs__api.html#structringfs">ringfs</a> fs;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <a class="code" href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a>(&amp;fs, &amp;flash, 0x00000042, 4);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a>(&amp;fs);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    printf(<span class="stringliteral">&quot;## write some records\n&quot;</span>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;10; i++)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 10);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 10);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    printf(<span class="stringliteral">&quot;## rescan\n&quot;</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 10);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 10);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    printf(<span class="stringliteral">&quot;## append more records\n&quot;</span>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=10; i&lt;13; i++)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x11*(i+1) });</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    printf(<span class="stringliteral">&quot;## fetch some objects without discard\n&quot;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;4; i++) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    printf(<span class="stringliteral">&quot;## rescan\n&quot;</span>);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    printf(<span class="stringliteral">&quot;## fetch some objects with discard\n&quot;</span>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;4; i++) {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        ck_assert(<a class="code" href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a>(&amp;fs, &amp;obj) == 0);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        ck_assert_int_eq(obj, 0x11*(i+1));</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 13);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    ck_assert(<a class="code" href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a>(&amp;fs) == 0);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 9);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 9);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    printf(<span class="stringliteral">&quot;## fill the segment\n&quot;</span>);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">int</span> count = fs.<a class="code" href="group__ringfs__api.html#a871746d1eb09b597649a4b18d222e6ad">slots_per_sector</a> - 4;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;count; i++)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a>(&amp;fs, (<span class="keywordtype">int</span>[]) { 0x42 });</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a>(&amp;fs), 9+count);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 9+count);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    printf(<span class="stringliteral">&quot;## extra synthetic tests for estimation\n&quot;</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">/* wrapping around */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    fs.<a class="code" href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">read</a> = (<span class="keyword">struct </span>ringfs_loc) { 12, fs.<a class="code" href="group__ringfs__api.html#a871746d1eb09b597649a4b18d222e6ad">slots_per_sector</a> - 1 };</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    fs.<a class="code" href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">write</a> = (<span class="keyword">struct </span>ringfs_loc) { 0, 0 };</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    ck_assert_int_eq(<a class="code" href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a>(&amp;fs), 1);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;END_TEST</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">  325</a></span>&#160;Suite *<a class="code" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;{</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    Suite *s = suite_create (<span class="stringliteral">&quot;ringfs&quot;</span>);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    TCase *tc;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    tc = tcase_create(<span class="stringliteral">&quot;flashsim&quot;</span>);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    tcase_add_test(tc, test_flashsim);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    suite_add_tcase(s, tc);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    tc = tcase_create(<span class="stringliteral">&quot;ringfs&quot;</span>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    tcase_add_test(tc, test_ringfs_format);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    tcase_add_test(tc, test_ringfs_scan);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    tcase_add_test(tc, test_ringfs_append);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    tcase_add_test(tc, test_ringfs_discard);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    tcase_add_test(tc, test_ringfs_capacity);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    tcase_add_test(tc, test_ringfs_count);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    suite_add_tcase(s, tc);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  346</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;{</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">int</span> number_failed;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    Suite *s = <a class="code" href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a>();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    SRunner *sr = srunner_create(s);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    srunner_run_all(sr, CK_NORMAL);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    number_failed = srunner_ntests_failed(sr);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    srunner_free(sr);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/* vim: set ts=4 sw=4 et: */</span></div>
 <div class="ttc" id="structringfs__flash__partition_html_adc901810dcc197f7c174710cddfc7dab"><div class="ttname"><a href="structringfs__flash__partition.html#adc901810dcc197f7c174710cddfc7dab">ringfs_flash_partition::sector_size</a></div><div class="ttdeci">int sector_size</div><div class="ttdoc">Sector size, in bytes. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00025">ringfs.h:25</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_gac53a26b1c1aa5d4f96e5451aa75395b5"><div class="ttname"><a href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a></div><div class="ttdeci">int ringfs_format(struct ringfs *fs)</div><div class="ttdoc">Format the flash memory. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00152">ringfs.c:152</a></div></div>
-<div class="ttc" id="flashsim_8c_html_a9705afb0088832e7e0a327143818671d"><div class="ttname"><a href="flashsim_8c.html#a9705afb0088832e7e0a327143818671d">flashsim_program</a></div><div class="ttdeci">void flashsim_program(struct flashsim *sim, int addr, const uint8_t *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00079">flashsim.c:79</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gac53a26b1c1aa5d4f96e5451aa75395b5"><div class="ttname"><a href="group__ringfs__impl.html#gac53a26b1c1aa5d4f96e5451aa75395b5">ringfs_format</a></div><div class="ttdeci">int ringfs_format(struct ringfs *fs)</div><div class="ttdoc">Format the flash memory. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00153">ringfs.c:153</a></div></div>
+<div class="ttc" id="flashsim_8c_html_a9705afb0088832e7e0a327143818671d"><div class="ttname"><a href="flashsim_8c.html#a9705afb0088832e7e0a327143818671d">flashsim_program</a></div><div class="ttdeci">void flashsim_program(struct flashsim *sim, int addr, const uint8_t *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00086">flashsim.c:86</a></div></div>
 <div class="ttc" id="group__ringfs__api_html_aeecc2241a0f46a3ac040c643996dd801"><div class="ttname"><a href="group__ringfs__api.html#aeecc2241a0f46a3ac040c643996dd801">ringfs::write</a></div><div class="ttdeci">struct ringfs_loc write</div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00073">ringfs.h:73</a></div></div>
-<div class="ttc" id="tests_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00251">tests.c:251</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_ga3bc1139122cadfeef28feeae4764c8cc"><div class="ttname"><a href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a></div><div class="ttdeci">int ringfs_init(struct ringfs *fs, const struct ringfs_flash_partition *flash, uint32_t version, int object_size)</div><div class="ttdoc">Initialize a RingFS instance. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00138">ringfs.c:138</a></div></div>
-<div class="ttc" id="flashsim_8c_html_ad10fad9341f65afa442333683b4912e9"><div class="ttname"><a href="flashsim_8c.html#ad10fad9341f65afa442333683b4912e9">flashsim_read</a></div><div class="ttdeci">void flashsim_read(struct flashsim *sim, int addr, uint8_t *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00063">flashsim.c:63</a></div></div>
-<div class="ttc" id="tests_8c_html_a2d25f61b8c86b820f0f1eb4096466baf"><div class="ttname"><a href="tests_8c.html#a2d25f61b8c86b820f0f1eb4096466baf">op_read</a></div><div class="ttdeci">ssize_t op_read(int address, void *data, size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00075">tests.c:75</a></div></div>
+<div class="ttc" id="tests_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="tests_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00346">tests.c:346</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gad204b6f523276f612ce8a7888849a02d"><div class="ttname"><a href="group__ringfs__impl.html#gad204b6f523276f612ce8a7888849a02d">ringfs_capacity</a></div><div class="ttdeci">int ringfs_capacity(struct ringfs *fs)</div><div class="ttdoc">Calculate maximum RingFS capacity. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00278">ringfs.c:278</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_ga3bc1139122cadfeef28feeae4764c8cc"><div class="ttname"><a href="group__ringfs__impl.html#ga3bc1139122cadfeef28feeae4764c8cc">ringfs_init</a></div><div class="ttdeci">int ringfs_init(struct ringfs *fs, const struct ringfs_flash_partition *flash, uint32_t version, int object_size)</div><div class="ttdoc">Initialize a RingFS instance. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00139">ringfs.c:139</a></div></div>
+<div class="ttc" id="flashsim_8c_html_ad10fad9341f65afa442333683b4912e9"><div class="ttname"><a href="flashsim_8c.html#ad10fad9341f65afa442333683b4912e9">flashsim_read</a></div><div class="ttdeci">void flashsim_read(struct flashsim *sim, int addr, uint8_t *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00070">flashsim.c:70</a></div></div>
 <div class="ttc" id="structringfs__flash__partition_html"><div class="ttname"><a href="structringfs__flash__partition.html">ringfs_flash_partition</a></div><div class="ttdoc">Flash memory+parition descriptor. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00023">ringfs.h:23</a></div></div>
-<div class="ttc" id="flashsim_8c_html_a22e20b22d6ea78e1264e920c2be735c3"><div class="ttname"><a href="flashsim_8c.html#a22e20b22d6ea78e1264e920c2be735c3">flashsim_sector_erase</a></div><div class="ttdeci">void flashsim_sector_erase(struct flashsim *sim, int addr)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00048">flashsim.c:48</a></div></div>
-<div class="ttc" id="flashsim_8c_html_a8f32c3cb9fdc1a9e62e69aa17a4e871a"><div class="ttname"><a href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a></div><div class="ttdeci">struct flashsim * flashsim_open(const char *name, int size, int sector_size)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00029">flashsim.c:29</a></div></div>
+<div class="ttc" id="flashsim_8c_html_a22e20b22d6ea78e1264e920c2be735c3"><div class="ttname"><a href="flashsim_8c.html#a22e20b22d6ea78e1264e920c2be735c3">flashsim_sector_erase</a></div><div class="ttdeci">void flashsim_sector_erase(struct flashsim *sim, int addr)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00055">flashsim.c:55</a></div></div>
+<div class="ttc" id="flashsim_8c_html_a8f32c3cb9fdc1a9e62e69aa17a4e871a"><div class="ttname"><a href="flashsim_8c.html#a8f32c3cb9fdc1a9e62e69aa17a4e871a">flashsim_open</a></div><div class="ttdeci">struct flashsim * flashsim_open(const char *name, int size, int sector_size)</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00036">flashsim.c:36</a></div></div>
 <div class="ttc" id="group__ringfs__api_html_af473a1247c6707ccb7c99514cc6a2ce3"><div class="ttname"><a href="group__ringfs__api.html#af473a1247c6707ccb7c99514cc6a2ce3">ringfs::cursor</a></div><div class="ttdeci">struct ringfs_loc cursor</div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00074">ringfs.h:74</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gaecc8298c87495fb8298c4ae720947c69"><div class="ttname"><a href="group__ringfs__impl.html#gaecc8298c87495fb8298c4ae720947c69">ringfs_count_exact</a></div><div class="ttdeci">int ringfs_count_exact(struct ringfs *fs)</div><div class="ttdoc">Calculate exact object count. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00291">ringfs.c:291</a></div></div>
 <div class="ttc" id="group__ringfs__api_html_a871746d1eb09b597649a4b18d222e6ad"><div class="ttname"><a href="group__ringfs__api.html#a871746d1eb09b597649a4b18d222e6ad">ringfs::slots_per_sector</a></div><div class="ttdeci">int slots_per_sector</div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00069">ringfs.h:69</a></div></div>
-<div class="ttc" id="tests_8c_html_a6cac49bbd6af69b09b58427a557ad6b9"><div class="ttname"><a href="tests_8c.html#a6cac49bbd6af69b09b58427a557ad6b9">op_sector_erase</a></div><div class="ttdeci">int op_sector_erase(int address)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00063">tests.c:63</a></div></div>
-<div class="ttc" id="flashsim_8c_html_structflashsim"><div class="ttname"><a href="flashsim_8c.html#structflashsim">flashsim</a></div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00022">flashsim.c:22</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_gaad686e10e356160f9107d156a571c488"><div class="ttname"><a href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a></div><div class="ttdeci">int ringfs_discard(struct ringfs *fs)</div><div class="ttdoc">Discard all fetched objects up to the read cursor. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00370">ringfs.c:370</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gae2da383832a0f10a1cf84c0415516cb4"><div class="ttname"><a href="group__ringfs__impl.html#gae2da383832a0f10a1cf84c0415516cb4">ringfs_count_estimate</a></div><div class="ttdeci">int ringfs_count_estimate(struct ringfs *fs)</div><div class="ttdoc">Calculate approximate object count. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00283">ringfs.c:283</a></div></div>
+<div class="ttc" id="tests_8c_html_a20e51e6b53442c049c508a71a111e996"><div class="ttname"><a href="tests_8c.html#a20e51e6b53442c049c508a71a111e996">op_read</a></div><div class="ttdeci">static ssize_t op_read(int address, void *data, size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00075">tests.c:75</a></div></div>
+<div class="ttc" id="flashsim_8c_html_structflashsim"><div class="ttname"><a href="flashsim_8c.html#structflashsim">flashsim</a></div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00029">flashsim.c:29</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gaad686e10e356160f9107d156a571c488"><div class="ttname"><a href="group__ringfs__impl.html#gaad686e10e356160f9107d156a571c488">ringfs_discard</a></div><div class="ttdeci">int ringfs_discard(struct ringfs *fs)</div><div class="ttdoc">Discard all fetched objects up to the read cursor. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00384">ringfs.c:384</a></div></div>
 <div class="ttc" id="group__ringfs__api_html_structringfs"><div class="ttname"><a href="group__ringfs__api.html#structringfs">ringfs</a></div><div class="ttdoc">RingFS instance. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00063">ringfs.h:63</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_gab37f64e2fa2f1304ca5b3a41a8567b8f"><div class="ttname"><a href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a></div><div class="ttdeci">int ringfs_scan(struct ringfs *fs)</div><div class="ttdoc">Scan the flash memory for a valid filesystem. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00173">ringfs.c:173</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gab37f64e2fa2f1304ca5b3a41a8567b8f"><div class="ttname"><a href="group__ringfs__impl.html#gab37f64e2fa2f1304ca5b3a41a8567b8f">ringfs_scan</a></div><div class="ttdeci">int ringfs_scan(struct ringfs *fs)</div><div class="ttdoc">Scan the flash memory for a valid filesystem. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00174">ringfs.c:174</a></div></div>
 <div class="ttc" id="tests_8c_html_ad48c2ccaeef1d504cf00f68aa5cb78e1"><div class="ttname"><a href="tests_8c.html#ad48c2ccaeef1d504cf00f68aa5cb78e1">sim</a></div><div class="ttdeci">static END_TEST struct flashsim * sim</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00061">tests.c:61</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_ga82002714e13fbf0053ab342633c621f3"><div class="ttname"><a href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a></div><div class="ttdeci">int ringfs_fetch(struct ringfs *fs, void *object)</div><div class="ttdoc">Fetch next object from the ring, oldest-first. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00349">ringfs.c:349</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_ga82002714e13fbf0053ab342633c621f3"><div class="ttname"><a href="group__ringfs__impl.html#ga82002714e13fbf0053ab342633c621f3">ringfs_fetch</a></div><div class="ttdeci">int ringfs_fetch(struct ringfs *fs, void *object)</div><div class="ttdoc">Fetch next object from the ring, oldest-first. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00363">ringfs.c:363</a></div></div>
 <div class="ttc" id="group__ringfs__api_html_a419873d474d1800127a72f9bc171b870"><div class="ttname"><a href="group__ringfs__api.html#a419873d474d1800127a72f9bc171b870">ringfs::read</a></div><div class="ttdeci">struct ringfs_loc read</div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8h_source.html#l00072">ringfs.h:72</a></div></div>
 <div class="ttc" id="ringfs_8h_html"><div class="ttname"><a href="ringfs_8h.html">ringfs.h</a></div></div>
-<div class="ttc" id="flashsim_8c_html_a7025cae822045649d2dbef6b5d4e6e20"><div class="ttname"><a href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">flashsim::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00023">flashsim.c:23</a></div></div>
+<div class="ttc" id="flashsim_8c_html_a7025cae822045649d2dbef6b5d4e6e20"><div class="ttname"><a href="flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20">flashsim::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="flashsim_8c_source.html#l00030">flashsim.c:30</a></div></div>
 <div class="ttc" id="tests_8c_html_aa76db4a8f593472329b6a1ed66ae29a4"><div class="ttname"><a href="tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4">START_TEST</a></div><div class="ttdeci">START_TEST(test_flashsim)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00020">tests.c:20</a></div></div>
-<div class="ttc" id="tests_8c_html_add25641bea623700ada2badbb819f689"><div class="ttname"><a href="tests_8c.html#add25641bea623700ada2badbb819f689">op_program</a></div><div class="ttdeci">ssize_t op_program(int address, const void *data, size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00069">tests.c:69</a></div></div>
 <div class="ttc" id="tests_8c_html_a6c1b618cbeb54cd4ca1f6896f5c5a211"><div class="ttname"><a href="tests_8c.html#a6c1b618cbeb54cd4ca1f6896f5c5a211">flash</a></div><div class="ttdeci">static const struct ringfs_flash_partition flash</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00081">tests.c:81</a></div></div>
-<div class="ttc" id="tests_8c_html_a77d5b5583a193f4c284c2ba863379bb6"><div class="ttname"><a href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a></div><div class="ttdeci">END_TEST Suite * ringfs_suite(void)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00232">tests.c:232</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_gae8bbdf169e339a7ab1103f3499eb54d5"><div class="ttname"><a href="group__ringfs__impl.html#gae8bbdf169e339a7ab1103f3499eb54d5">ringfs_rewind</a></div><div class="ttdeci">int ringfs_rewind(struct ringfs *fs)</div><div class="ttdoc">Rewind the read cursor back to the oldest object. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00380">ringfs.c:380</a></div></div>
+<div class="ttc" id="tests_8c_html_a77d5b5583a193f4c284c2ba863379bb6"><div class="ttname"><a href="tests_8c.html#a77d5b5583a193f4c284c2ba863379bb6">ringfs_suite</a></div><div class="ttdeci">END_TEST Suite * ringfs_suite(void)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00325">tests.c:325</a></div></div>
+<div class="ttc" id="tests_8c_html_aa24d3a5e8628d9236281f56edd1d6493"><div class="ttname"><a href="tests_8c.html#aa24d3a5e8628d9236281f56edd1d6493">op_program</a></div><div class="ttdeci">static ssize_t op_program(int address, const void *data, size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00069">tests.c:69</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_gae8bbdf169e339a7ab1103f3499eb54d5"><div class="ttname"><a href="group__ringfs__impl.html#gae8bbdf169e339a7ab1103f3499eb54d5">ringfs_rewind</a></div><div class="ttdeci">int ringfs_rewind(struct ringfs *fs)</div><div class="ttdoc">Rewind the read cursor back to the oldest object. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00394">ringfs.c:394</a></div></div>
 <div class="ttc" id="flashsim_8h_html"><div class="ttname"><a href="flashsim_8h.html">flashsim.h</a></div></div>
-<div class="ttc" id="group__ringfs__impl_html_ga357fa299a02edba489183b9f4649e5e7"><div class="ttname"><a href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a></div><div class="ttdeci">int ringfs_append(struct ringfs *fs, const void *object)</div><div class="ttdoc">Append an object at the end of the ring. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00296">ringfs.c:296</a></div></div>
+<div class="ttc" id="tests_8c_html_a3c198d98cc1e392cd62838001d829827"><div class="ttname"><a href="tests_8c.html#a3c198d98cc1e392cd62838001d829827">op_sector_erase</a></div><div class="ttdeci">static int op_sector_erase(int address)</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00063">tests.c:63</a></div></div>
+<div class="ttc" id="group__ringfs__impl_html_ga357fa299a02edba489183b9f4649e5e7"><div class="ttname"><a href="group__ringfs__impl.html#ga357fa299a02edba489183b9f4649e5e7">ringfs_append</a></div><div class="ttdeci">int ringfs_append(struct ringfs *fs, const void *object)</div><div class="ttdoc">Append an object at the end of the ring. </div><div class="ttdef"><b>Definition:</b> <a href="ringfs_8c_source.html#l00310">ringfs.c:310</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 28 2014 14:20:59 for ringfs by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 28 2014 17:49:21 for ringfs by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

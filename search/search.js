@@ -9,13 +9,14 @@ var indexSectionsWithContent =
 {
   0: "_cflmoprstvw",
   1: "frs",
-  2: "frt",
+  2: "cfrt",
   3: "_fmors",
   4: "cfoprsvw",
   5: "s",
   6: "s",
   7: "c",
-  8: "lrs"
+  8: "lrs",
+  9: "r"
 };
 
 var indexSectionNames =
@@ -28,7 +29,8 @@ var indexSectionNames =
   5: "enums",
   6: "enumvalues",
   7: "defines",
-  8: "groups"
+  8: "groups",
+  9: "pages"
 };
 
 function convertToId(search)
