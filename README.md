@@ -24,10 +24,11 @@ semantics:
 
 ## Usage
 
-1. Add ``ringfs.[ch]`` to your project.
+1. Add ``ringfs.c`` and ``ringfs.h`` to your project.
 2. Implement the required Flash ops (``sector_erase``, ``program``, ``read``).
 3. Glue your Flash ops with ringfs using ``struct ringfs_flash_partition``.
-   See ``tests.c`` for an example.
+
+See ``example.c`` if this sounds complicated.
 
 ## Documentation
 

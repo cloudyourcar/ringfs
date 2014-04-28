@@ -7,7 +7,7 @@
 CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I.
 LDLIBS = -lcheck
 
-all: scan-build test
+all: scan-build test example
 	@echo "+++ All good."""
 
 test: tests
@@ -25,8 +25,10 @@ clean:
 	$(RM) tests *.o html/ *.sim tags
 
 tests: tests.o ringfs.o flashsim.o
+example: example.o ringfs.o flashsim.o
 tests.o: tests.c ringfs.h
 ringfs.o: ringfs.c ringfs.h
 flashsim.o: flashsim.c flashsim.h
+example.o: example.c ringfs.h flashsim.h
 
 .PHONY: all test scan-build clean docs
