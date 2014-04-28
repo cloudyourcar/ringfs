@@ -270,35 +270,55 @@ START_TEST(test_ringfs_count)
     for (int i=0; i<10; i++)
         ringfs_append(&fs, (int[]) { 0x11*(i+1) });
     ck_assert_int_eq(ringfs_count_exact(&fs), 10);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 10);
 
     printf("## rescan\n");
     ck_assert(ringfs_scan(&fs) == 0);
     ck_assert_int_eq(ringfs_count_exact(&fs), 10);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 10);
 
     printf("## append more records\n");
     for (int i=10; i<13; i++)
         ringfs_append(&fs, (int[]) { 0x11*(i+1) });
     ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 13);
 
-    printf("fetch some objects without discard\n");
+    printf("## fetch some objects without discard\n");
     for (int i=0; i<4; i++) {
         ck_assert(ringfs_fetch(&fs, &obj) == 0);
         ck_assert_int_eq(obj, 0x11*(i+1));
     }
     ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 13);
 
-    printf("rescan\n");
+    printf("## rescan\n");
     ck_assert(ringfs_scan(&fs) == 0);
     ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 13);
 
-    printf("fetch some objects with discard\n");
+    printf("## fetch some objects with discard\n");
     for (int i=0; i<4; i++) {
         ck_assert(ringfs_fetch(&fs, &obj) == 0);
         ck_assert_int_eq(obj, 0x11*(i+1));
     }
     ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 13);
     ck_assert(ringfs_discard(&fs) == 0);
     ck_assert_int_eq(ringfs_count_exact(&fs), 9);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 9);
+
+    printf("## fill the segment\n");
+    int count = fs.slots_per_sector - 4;
+    for (int i=0; i<count; i++)
+        ringfs_append(&fs, (int[]) { 0x42 });
+    ck_assert_int_eq(ringfs_count_exact(&fs), 9+count);
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 9+count);
+
+    printf("## extra synthetic tests for estimation\n");
+    /* wrapping around */
+    fs.read = (struct ringfs_loc) { 12, fs.slots_per_sector - 1 };
+    fs.write = (struct ringfs_loc) { 0, 0 };
+    ck_assert_int_eq(ringfs_count_estimate(&fs), 1);
 }
 END_TEST
 

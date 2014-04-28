@@ -280,6 +280,14 @@ int ringfs_capacity(struct ringfs *fs)
     return fs->slots_per_sector * (fs->flash->sector_count - 1);
 }
 
+int ringfs_count_estimate(struct ringfs *fs)
+{
+    int sector_diff = (fs->write.sector - fs->read.sector + fs->flash->sector_count) %
+        fs->flash->sector_count;
+
+    return sector_diff * fs->slots_per_sector + fs->write.slot - fs->read.slot;
+}
+
 int ringfs_count_exact(struct ringfs *fs)
 {
     int count = 0;
