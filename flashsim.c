@@ -14,10 +14,17 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#ifdef COLOR_OUTPUT
 #define cprintf(colors, fmt, args...) \
     printf("\x1b[0;1;" colors "m" fmt , ## args)
 #define cprintf_end(fmt, args...) \
     printf(fmt "\x1b[0m\n" , ## args)
+#else
+#define cprintf(colors, fmt, args...) \
+    printf(fmt , ## args)
+#define cprintf_end(fmt, args...) \
+    printf(fmt "\n" , ## args)
+#endif
 
 struct flashsim {
     int size;
