@@ -22,6 +22,17 @@ semantics:
 * No dynamic memory allocation.
 * Basic robustness features for error recovery.
 
+## Usage
+
+1. Add ``ringfs.[ch]`` to your project.
+2. Implement the required Flash ops (``sector_erase``, ``program``, ``read``).
+3. Glue your Flash ops with ringfs using ``struct ringfs_flash_partition``.
+   See ``tests.c`` for an example.
+
+## Documentation
+
+See Doxygen-generated documentation at http://cloudyourcar.github.io/ringfs/.
+
 ## Non-Features
 
 The ring buffer has been designed to be as simple as possible. Therefore, the
