@@ -104,6 +104,14 @@ int ringfs_format(struct ringfs *fs);
 int ringfs_scan(struct ringfs *fs);
 
 /**
+ * Calculate maximum RingFS capacity.
+ *
+ * @param fs Initialized RingFS instance.
+ * @returns Maximum capacity on success, -1 on failure.
+ */
+int ringfs_capacity(struct ringfs *fs);
+
+/**
  * Calculate approximate object count. Completes in O(1).
  *
  * @param fs Initialized RingFS instance.
