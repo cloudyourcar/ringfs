@@ -200,7 +200,7 @@ END_TEST
 START_TEST(test_ringfs_discard)
 {
     printf("# test_ringfs_discard\n");
-    sim = flashsim_open("ringfs_append.sim", 65536*16, 65536);
+    sim = flashsim_open("ringfs_discard.sim", 65536*16, 65536);
 
     struct ringfs fs;
     printf("## ringfs_init()\n");
@@ -241,6 +241,67 @@ START_TEST(test_ringfs_discard)
 }
 END_TEST
 
+START_TEST(test_ringfs_capacity)
+{
+    printf("# test_ringfs_capacity\n");
+    sim = flashsim_open("ringfs_capacity.sim", 65536*16, 65536);
+
+    struct ringfs fs;
+    ringfs_init(&fs, &flash, 0x00000042, 4);
+
+    int slots_per_sector = (65536-8)/(4+4);
+    int sectors = 13;
+    ck_assert_int_eq(ringfs_capacity(&fs), (sectors-1) * slots_per_sector);
+}
+END_TEST
+
+START_TEST(test_ringfs_count)
+{
+    printf("# test_ringfs_count\n");
+    sim = flashsim_open("ringfs_count.sim", 65536*16, 65536);
+
+    int obj;
+    struct ringfs fs;
+    ringfs_init(&fs, &flash, 0x00000042, 4);
+    ringfs_format(&fs);
+    ck_assert(ringfs_count_exact(&fs) == 0);
+
+    printf("## write some records\n");
+    for (int i=0; i<10; i++)
+        ringfs_append(&fs, (int[]) { 0x11*(i+1) });
+    ck_assert_int_eq(ringfs_count_exact(&fs), 10);
+
+    printf("## rescan\n");
+    ck_assert(ringfs_scan(&fs) == 0);
+    ck_assert_int_eq(ringfs_count_exact(&fs), 10);
+
+    printf("## append more records\n");
+    for (int i=10; i<13; i++)
+        ringfs_append(&fs, (int[]) { 0x11*(i+1) });
+    ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+
+    printf("fetch some objects without discard\n");
+    for (int i=0; i<4; i++) {
+        ck_assert(ringfs_fetch(&fs, &obj) == 0);
+        ck_assert_int_eq(obj, 0x11*(i+1));
+    }
+    ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+
+    printf("rescan\n");
+    ck_assert(ringfs_scan(&fs) == 0);
+    ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+
+    printf("fetch some objects with discard\n");
+    for (int i=0; i<4; i++) {
+        ck_assert(ringfs_fetch(&fs, &obj) == 0);
+        ck_assert_int_eq(obj, 0x11*(i+1));
+    }
+    ck_assert_int_eq(ringfs_count_exact(&fs), 13);
+    ck_assert(ringfs_discard(&fs) == 0);
+    ck_assert_int_eq(ringfs_count_exact(&fs), 9);
+}
+END_TEST
+
 Suite *ringfs_suite(void)
 {
     Suite *s = suite_create ("ringfs");
@@ -255,6 +316,8 @@ Suite *ringfs_suite(void)
     tcase_add_test(tc, test_ringfs_scan);
     tcase_add_test(tc, test_ringfs_append);
     tcase_add_test(tc, test_ringfs_discard);
+    tcase_add_test(tc, test_ringfs_capacity);
+    tcase_add_test(tc, test_ringfs_count);
     suite_add_tcase(s, tc);
 
     return s;

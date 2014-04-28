@@ -112,7 +112,8 @@ int ringfs_scan(struct ringfs *fs);
 int ringfs_capacity(struct ringfs *fs);
 
 /**
- * Calculate approximate object count. Completes in O(1).
+ * Calculate approximate object count.
+ * Runs in O(1).
  *
  * @param fs Initialized RingFS instance.
  * @returns Estimated object count on success, -1 on failure.
@@ -120,8 +121,8 @@ int ringfs_capacity(struct ringfs *fs);
 int ringfs_count_estimate(struct ringfs *fs);
 
 /**
- * Calculate exact object count. Completes in O(n) because the entire allocated
- * memory must be scanned.
+ * Calculate exact object count.
+ * Runs in O(n).
  *
  * @param fs Initialized RingFS instance.
  * @returns Exact object count on success, -1 on failure.
