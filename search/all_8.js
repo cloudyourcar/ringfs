@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['sector',['Sector',['../group__sector.html',1,'']]],
+  ['sector_5fcount',['sector_count',['../structringfs__flash__partition.html#aa9e332a1da390590b4a57cd17be54e9d',1,'ringfs_flash_partition']]],
+  ['sector_5ferase',['sector_erase',['../structringfs__flash__partition.html#a20d7b905f002006c82b8227d1147ba00',1,'ringfs_flash_partition']]],
+  ['sector_5ferased',['SECTOR_ERASED',['../group__sector.html#ggad63eaa8bfb7229de6930e390c338c895a628c07f9e0fa4922da99ef3673c65749',1,'ringfs.c']]],
+  ['sector_5ferasing',['SECTOR_ERASING',['../group__sector.html#ggad63eaa8bfb7229de6930e390c338c895a65cb2197105225fd21a2a32e8d884760',1,'ringfs.c']]],
+  ['sector_5fformatting',['SECTOR_FORMATTING',['../group__sector.html#ggad63eaa8bfb7229de6930e390c338c895a7881ccb42d637e8356b4b42b1eaeaa51',1,'ringfs.c']]],
+  ['sector_5ffree',['SECTOR_FREE',['../group__sector.html#ggad63eaa8bfb7229de6930e390c338c895a80156c17430013a0a0c2e4cfe39ad27e',1,'ringfs.c']]],
+  ['sector_5fheader',['sector_header',['../group__sector.html#structsector__header',1,'']]],
+  ['sector_5fin_5fuse',['SECTOR_IN_USE',['../group__sector.html#ggad63eaa8bfb7229de6930e390c338c895aa763f1c8b975a6f09a6bcc4bb37c0db0',1,'ringfs.c']]],
+  ['sector_5foffset',['sector_offset',['../structringfs__flash__partition.html#ac301febe7144fda7204b71727a2e7d4e',1,'ringfs_flash_partition']]],
+  ['sector_5fsize',['sector_size',['../flashsim_8c.html#ac7e54c2922b4bc01970602bde8400980',1,'flashsim::sector_size()'],['../structringfs__flash__partition.html#adc901810dcc197f7c174710cddfc7dab',1,'ringfs_flash_partition::sector_size()']]],
+  ['sector_5fstatus',['sector_status',['../group__sector.html#gad63eaa8bfb7229de6930e390c338c895',1,'ringfs.c']]],
+  ['sim',['sim',['../tests_8c.html#ad48c2ccaeef1d504cf00f68aa5cb78e1',1,'tests.c']]],
+  ['size',['size',['../flashsim_8c.html#a7025cae822045649d2dbef6b5d4e6e20',1,'flashsim']]],
+  ['slot',['Slot',['../group__slot.html',1,'']]],
+  ['slot_5ferased',['SLOT_ERASED',['../group__slot.html#gga4c0e214062079ff665c54dbc682bb832afc85dc11d33f2e073b4ecc8027d25713',1,'ringfs.c']]],
+  ['slot_5fgarbage',['SLOT_GARBAGE',['../group__slot.html#gga4c0e214062079ff665c54dbc682bb832a670ed8a44cf6bb706bf2c7aaf0a91cd3',1,'ringfs.c']]],
+  ['slot_5fheader',['slot_header',['../group__slot.html#structslot__header',1,'']]],
+  ['slot_5freserved',['SLOT_RESERVED',['../group__slot.html#gga4c0e214062079ff665c54dbc682bb832af815bf66d06f0d17c0fe421ddc9d0f91',1,'ringfs.c']]],
+  ['slot_5fstatus',['slot_status',['../group__slot.html#ga4c0e214062079ff665c54dbc682bb832',1,'ringfs.c']]],
+  ['slot_5fvalid',['SLOT_VALID',['../group__slot.html#gga4c0e214062079ff665c54dbc682bb832a719d27b71a8f1133cc17c8e8dcc252e7',1,'ringfs.c']]],
+  ['slots_5fper_5fsector',['slots_per_sector',['../group__ringfs__api.html#a871746d1eb09b597649a4b18d222e6ad',1,'ringfs']]],
+  ['start_5ftest',['START_TEST',['../tests_8c.html#aa76db4a8f593472329b6a1ed66ae29a4',1,'START_TEST(test_flashsim):&#160;tests.c'],['../tests_8c.html#a91eba67e27ae84c5605a4c31ae390483',1,'START_TEST(test_ringfs_format):&#160;tests.c'],['../tests_8c.html#a27f286e131222dea75b10633a41487e1',1,'START_TEST(test_ringfs_scan):&#160;tests.c'],['../tests_8c.html#a4fc681d8c45d618db785aad4ddd15a5f',1,'START_TEST(test_ringfs_append):&#160;tests.c'],['../tests_8c.html#aabd79e6a860423a2581acd5fecd4d0d4',1,'START_TEST(test_ringfs_discard):&#160;tests.c']]],
+  ['status',['status',['../group__sector.html#a52996c88c14aec4de151e2fcfa853a8f',1,'sector_header::status()'],['../group__slot.html#afbd9c46814da061cc5126c9bca78aed9',1,'slot_header::status()']]]
+];
