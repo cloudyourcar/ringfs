@@ -15,6 +15,7 @@
 
 #include <ringfs.h>
 
+#include <inttypes.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -213,7 +214,7 @@ int ringfs_scan(struct ringfs *fs)
         /* Detect obsolete versions. We can't do this earlier because the version
          * could have been invalid due to a partial erase. */
         if (header.version != fs->version) {
-            printf("ringfs_scan: incompatible version 0x%08x\r\n", header.version);
+            printf("ringfs_scan: incompatible version 0x%08"PRIx32"\r\n", header.version);
             return -1;
         }
 
