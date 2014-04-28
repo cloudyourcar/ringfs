@@ -171,11 +171,6 @@ int ringfs_format(struct ringfs *fs)
     return 0;
 }
 
-int ringfs_capacity(struct ringfs *fs)
-{
-    return fs->slots_per_sector * (fs->flash->sector_count - 1);
-}
-
 int ringfs_scan(struct ringfs *fs)
 {
     uint32_t previous_sector_status = SECTOR_FREE;
@@ -278,6 +273,11 @@ int ringfs_scan(struct ringfs *fs)
     fs->cursor = fs->read;
 
     return 0;
+}
+
+int ringfs_capacity(struct ringfs *fs)
+{
+    return fs->slots_per_sector * (fs->flash->sector_count - 1);
 }
 
 int ringfs_count_exact(struct ringfs *fs)
