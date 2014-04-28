@@ -60,19 +60,19 @@ END_TEST
 
 static struct flashsim *sim;
 
-int op_sector_erase(int address)
+static int op_sector_erase(int address)
 {
     flashsim_sector_erase(sim, address);
     return 0;
 }
 
-ssize_t op_program(int address, const void *data, size_t size)
+static ssize_t op_program(int address, const void *data, size_t size)
 {
     flashsim_program(sim, address, data, size);
     return size;
 }
 
-ssize_t op_read(int address, void *data, size_t size)
+static ssize_t op_read(int address, void *data, size_t size)
 {
     flashsim_read(sim, address, data, size);
     return size;
