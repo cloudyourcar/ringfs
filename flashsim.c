@@ -14,16 +14,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#ifdef COLOR_OUTPUT
-#define cprintf(colors, fmt, args...) \
-    printf("\x1b[0;1;" colors "m" fmt , ## args)
-#define cprintf_end(fmt, args...) \
-    printf(fmt "\x1b[0m\n" , ## args)
+#ifdef FLASHSIM_LOG
+#define logprintf(args...) printf(args)
 #else
-#define cprintf(colors, fmt, args...) \
-    printf(fmt , ## args)
-#define cprintf_end(fmt, args...) \
-    printf(fmt "\n" , ## args)
+#define logprintf(args...) do {} while (0)
 #endif
 
 struct flashsim {
@@ -55,8 +49,7 @@ void flashsim_close(struct flashsim *sim)
 void flashsim_sector_erase(struct flashsim *sim, int addr)
 {
     int sector_start = addr & ~(sim->sector_size - 1);
-    cprintf("31", "flashsim_erase  (0x%08x) * erasing sector at 0x%08x", addr, sector_start);
-    cprintf_end("");
+    logprintf("flashsim_erase  (0x%08x) * erasing sector at 0x%08x\n", addr, sector_start);
 
     void *empty = malloc(sim->sector_size);
     memset(empty, 0xff, sim->sector_size);
@@ -72,28 +65,28 @@ void flashsim_read(struct flashsim *sim, int addr, uint8_t *buf, int len)
     assert(fseek(sim->fh, addr, SEEK_SET) == 0);
     assert(fread(buf, 1, len, sim->fh) == (size_t) len);
 
-    cprintf("32", "flashsim_read   (0x%08x) = %d bytes [ ", addr, len);
+    logprintf("flashsim_read   (0x%08x) = %d bytes [ ", addr, len);
     for (int i=0; i<len; i++) {
-        printf("%02x ", buf[i]);
+        logprintf("%02x ", buf[i]);
         if (i == 15) {
-            printf("... ");
+            logprintf("... ");
             break;
         }
     }
-    cprintf_end("]");
+    logprintf("]\n");
 }
 
 void flashsim_program(struct flashsim *sim, int addr, const uint8_t *buf, int len)
 {
-    cprintf("34", "flashsim_program(0x%08x) + %d bytes [ ", addr, len);
+    logprintf("flashsim_program(0x%08x) + %d bytes [ ", addr, len);
     for (int i=0; i<len; i++) {
-        printf("%02x ", buf[i]);
+        logprintf("%02x ", buf[i]);
         if (i == 15) {
-            printf("... ");
+            logprintf("... ");
             break;
         }
     }
-    cprintf_end("]");
+    logprintf("]\n");
 
     uint8_t *data = malloc(len);
 
