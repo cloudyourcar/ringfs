@@ -3,7 +3,7 @@
 *.diff
 .*.swp
 ringfs
-tests
+tests/tests
 example
 tags
 html/

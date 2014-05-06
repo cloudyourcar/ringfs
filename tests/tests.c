@@ -23,7 +23,7 @@ START_TEST(test_flashsim)
 {
     printf("# test_flashsim\n");
 
-    struct flashsim *smallsim = flashsim_open("test.sim", 1024, 16);
+    struct flashsim *smallsim = flashsim_open("tests/test.sim", 1024, 16);
     uint8_t buf[48];
     uint8_t data[16];
 
@@ -99,7 +99,7 @@ static const struct ringfs_flash_partition flash = {
 
 static void fixture_flashsim_setup(void)
 {
-    sim = flashsim_open("ringfs.sim",
+    sim = flashsim_open("tests/ringfs.sim",
             flash.sector_size * (flash.sector_offset + flash.sector_count),
             flash.sector_size);
 }

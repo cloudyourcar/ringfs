@@ -4,15 +4,15 @@
 # the terms of the Do What The Fuck You Want To Public License, Version 2, as
 # published by Sam Hocevar. See the COPYING file for more details.
 
-CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I.
+CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I. -Itests
 LDLIBS = -lcheck
 
 all: scan-build test example
 	@echo "+++ All good."""
 
-test: tests
+test: tests/tests
 	@echo "+++ Running Check test suite..."
-	./tests
+	tests/tests
 
 scan-build: clean
 	@echo "+++ Running Clang Static Analyzer..."
@@ -22,13 +22,14 @@ docs:
 	doxygen
 
 clean:
-	$(RM) tests *.o html/ *.sim tags
+	$(RM) *.o tests/*.o tests/tests html/ *.sim tags
 
-tests: tests.o ringfs.o flashsim.o
-example: example.o ringfs.o flashsim.o
-tests.o: tests.c ringfs.h
 ringfs.o: ringfs.c ringfs.h
-flashsim.o: flashsim.c flashsim.h
-example.o: example.c ringfs.h flashsim.h
+example: example.o ringfs.o tests/flashsim.o
+example.o: example.c ringfs.h tests/flashsim.h
+
+tests/tests: ringfs.o tests/tests.o tests/flashsim.o
+tests/tests.o: tests/tests.c ringfs.h
+tests/flashsim.o: tests/flashsim.c tests/flashsim.h
 
 .PHONY: all test scan-build clean docs
