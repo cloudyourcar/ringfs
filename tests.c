@@ -94,7 +94,7 @@ static const struct ringfs_flash_partition flash = {
 
 static void fixture_flashsim_setup(void)
 {
-    sim = flashsim_open("ringfs_format.sim", 65536*16, 65536);
+    sim = flashsim_open("ringfs.sim", 65536*16, 65536);
 }
 
 static void fixture_flashsim_teardown(void)
