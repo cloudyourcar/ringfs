@@ -94,7 +94,9 @@ static const struct ringfs_flash_partition flash = {
 
 static void fixture_flashsim_setup(void)
 {
-    sim = flashsim_open("ringfs.sim", 65536*16, 65536);
+    sim = flashsim_open("ringfs.sim",
+            flash.sector_size * (flash.sector_offset + flash.sector_count),
+            flash.sector_size);
 }
 
 static void fixture_flashsim_teardown(void)
@@ -105,13 +107,18 @@ static void fixture_flashsim_teardown(void)
 
 /* RingFS tests. */
 
+#define DEFAULT_VERSION 0x000000042
+typedef int object_t;
+#define SECTOR_HEADER_SIZE 8
+#define SLOT_HEADER_SIZE 4
+
 START_TEST(test_ringfs_format)
 {
     printf("# test_ringfs_format\n");
 
     struct ringfs fs1;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs1, &flash, 0x00000042, 4);
+    ringfs_init(&fs1, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_format()\n");
     ringfs_format(&fs1);
 }
@@ -124,19 +131,19 @@ START_TEST(test_ringfs_scan)
     /* first format a filesystem */
     struct ringfs fs1;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs1, &flash, 0x00000042, 4);
+    ringfs_init(&fs1, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_format()\n");
     ringfs_format(&fs1);
 
     /* now try to scan it */
     struct ringfs fs2;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs2, &flash, 0x00000042, 4);
+    ringfs_init(&fs2, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_scan()\n");
     ck_assert(ringfs_scan(&fs2) == 0);
 
     /* this is an empty FS, should start with this: */
-    ck_assert_int_eq(fs2.slots_per_sector, (65536-8)/(4+4));
+    ck_assert_int_eq(fs2.slots_per_sector, (flash.sector_size-SECTOR_HEADER_SIZE)/(SLOT_HEADER_SIZE+sizeof(object_t)));
     ck_assert_int_eq(fs2.read.sector, 0);
     ck_assert_int_eq(fs2.read.slot, 0);
     ck_assert_int_eq(fs2.write.sector, 0);
@@ -159,7 +166,7 @@ START_TEST(test_ringfs_scan)
     /* scan should fail if we supply a different version */
     struct ringfs fs3;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs3, &flash, 0x00000043, 4);
+    ringfs_init(&fs3, &flash, DEFAULT_VERSION+1, sizeof(object_t));
     printf("## ringfs_scan()\n");
     ck_assert(ringfs_scan(&fs3) != 0);
 }
@@ -172,7 +179,7 @@ START_TEST(test_ringfs_append)
     /* first format a filesystem */
     struct ringfs fs;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs, &flash, 0x00000042, 4);
+    ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_format()\n");
     ringfs_format(&fs);
 
@@ -217,7 +224,7 @@ START_TEST(test_ringfs_discard)
 
     struct ringfs fs;
     printf("## ringfs_init()\n");
-    ringfs_init(&fs, &flash, 0x00000042, 4);
+    ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_format()\n");
     ringfs_format(&fs);
 
@@ -259,10 +266,10 @@ START_TEST(test_ringfs_capacity)
     printf("# test_ringfs_capacity\n");
 
     struct ringfs fs;
-    ringfs_init(&fs, &flash, 0x00000042, 4);
+    ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
 
-    int slots_per_sector = (65536-8)/(4+4);
-    int sectors = 13;
+    int slots_per_sector = (flash.sector_size-SECTOR_HEADER_SIZE)/(SLOT_HEADER_SIZE+sizeof(object_t));
+    int sectors = flash.sector_count;
     ck_assert_int_eq(ringfs_capacity(&fs), (sectors-1) * slots_per_sector);
 }
 END_TEST
@@ -273,7 +280,7 @@ START_TEST(test_ringfs_count)
 
     int obj;
     struct ringfs fs;
-    ringfs_init(&fs, &flash, 0x00000042, 4);
+    ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
     ringfs_format(&fs);
     ck_assert(ringfs_count_exact(&fs) == 0);
 
