@@ -221,6 +221,10 @@ int ringfs_scan(struct ringfs *fs)
         if (header.status == SECTOR_FREE)
             free_seen = true;
 
+        /* Record the presence of a IN_USE sector. */
+        if (header.status == SECTOR_IN_USE)
+            used_seen = true;
+
         /* Update read & write sectors according to the above rules. */
         if (header.status == SECTOR_IN_USE && previous_sector_status == SECTOR_FREE)
             read_sector = sector;
