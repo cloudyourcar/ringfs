@@ -166,6 +166,8 @@ int ringfs_rewind(struct ringfs *fs);
 
 /**
  * Dump filesystem metadata. For debugging purposes.
+ * @param stream File stream to write to.
+ * @param fs Initialized RingFS instance.
  */
 void ringfs_dump(FILE *stream, struct ringfs *fs);
 
