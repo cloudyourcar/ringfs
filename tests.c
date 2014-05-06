@@ -337,7 +337,7 @@ START_TEST(test_ringfs_count)
 
     printf("## extra synthetic tests for estimation\n");
     /* wrapping around */
-    fs.read = (struct ringfs_loc) { 12, fs.slots_per_sector - 1 };
+    fs.read = (struct ringfs_loc) { fs.flash->sector_count - 1, fs.slots_per_sector - 1 };
     fs.write = (struct ringfs_loc) { 0, 0 };
     ck_assert_int_eq(ringfs_count_estimate(&fs), 1);
 }
