@@ -18,7 +18,6 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdio.h>
 
 
 /**
@@ -395,6 +394,56 @@ int ringfs_rewind(struct ringfs *fs)
 {
     fs->cursor = fs->read;
     return 0;
+}
+
+void ringfs_dump(FILE *stream, struct ringfs *fs)
+{
+    const char *description;
+
+    fprintf(stream, "RingFS read: {%d,%d} cursor: {%d,%d} write: {%d,%d}\n",
+            fs->read.sector, fs->read.slot,
+            fs->cursor.sector, fs->cursor.slot,
+            fs->write.sector, fs->write.slot);
+
+    for (int sector=0; sector<fs->flash->sector_count; sector++) {
+        int addr = _sector_address(fs, sector);
+
+        /* Read sector header. */
+        struct sector_header header;
+        fs->flash->read(addr, &header, sizeof(header));
+
+        switch (header.status) {
+            case SECTOR_ERASED: description = "ERASED"; break;
+            case SECTOR_FREE: description = "FREE"; break;
+            case SECTOR_IN_USE: description = "IN_USE"; break;
+            case SECTOR_ERASING: description = "ERASING"; break;
+            case SECTOR_FORMATTING: description = "FORMATTING"; break;
+            default: description = "UNKNOWN"; break;
+        }
+
+        fprintf(stream, "[%04d] [v=0x%08"PRIx32"] [%-10s] ",
+                sector, header.version, description);
+
+        for (int slot=0; slot<fs->slots_per_sector; slot++) {
+            struct ringfs_loc loc = { sector, slot };
+            uint32_t status;
+            _slot_get_status(fs, &loc, &status);
+
+            switch (status) {
+                case SLOT_ERASED: description = "E"; break;
+                case SLOT_RESERVED: description = "R"; break;
+                case SLOT_VALID: description = "V"; break;
+                case SLOT_GARBAGE: description = "G"; break;
+                default: description = "?"; break;
+            }
+
+            fprintf(stream, "%s", description);
+        }
+
+        fprintf(stream, "\n");
+    }
+
+    fflush(stream);
 }
 
 /**

@@ -15,6 +15,7 @@
  */
 
 #include <stdint.h>
+#include <stdio.h>
 #include <unistd.h>
 
 /**
@@ -162,6 +163,11 @@ int ringfs_discard(struct ringfs *fs);
  * @returns Zero on success, -1 on failure.
  */
 int ringfs_rewind(struct ringfs *fs);
+
+/**
+ * Dump filesystem metadata. For debugging purposes.
+ */
+void ringfs_dump(FILE *stream, struct ringfs *fs);
 
 /**
  * @}
