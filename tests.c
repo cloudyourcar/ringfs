@@ -17,22 +17,24 @@
 #include "ringfs.h"
 #include "flashsim.h"
 
+/* Flashsim tests. */
+
 START_TEST(test_flashsim)
 {
     printf("# test_flashsim\n");
 
-    struct flashsim *sim = flashsim_open("test.sim", 1024, 16);
+    struct flashsim *smallsim = flashsim_open("test.sim", 1024, 16);
     uint8_t buf[48];
     uint8_t data[16];
 
-    flashsim_sector_erase(sim, 0);
-    flashsim_sector_erase(sim, 16);
-    flashsim_sector_erase(sim, 32);
+    flashsim_sector_erase(smallsim, 0);
+    flashsim_sector_erase(smallsim, 16);
+    flashsim_sector_erase(smallsim, 32);
 
     memset(data, 0x5a, 16);
-    flashsim_program(sim, 16, data, 16);
+    flashsim_program(smallsim, 16, data, 16);
 
-    flashsim_read(sim, 0, buf, 48);
+    flashsim_read(smallsim, 0, buf, 48);
     for (int i=0; i<16; i++)
         ck_assert_int_eq(buf[i], 0xff);
     for (int i=16; i<32; i++)
@@ -41,12 +43,12 @@ START_TEST(test_flashsim)
         ck_assert_int_eq(buf[i], 0xff);
 
     memset(data, 0x01, 16);
-    flashsim_program(sim, 0, data, 16);
+    flashsim_program(smallsim, 0, data, 16);
     memset(data, 0x10, 16);
-    flashsim_program(sim, 32, data, 16);
-    flashsim_sector_erase(sim, 16);
+    flashsim_program(smallsim, 32, data, 16);
+    flashsim_sector_erase(smallsim, 16);
 
-    flashsim_read(sim, 0, buf, 48);
+    flashsim_read(smallsim, 0, buf, 48);
     for (int i=0; i<16; i++)
         ck_assert_int_eq(buf[i], 0x01);
     for (int i=16; i<32; i++)
@@ -54,7 +56,7 @@ START_TEST(test_flashsim)
     for (int i=32; i<48; i++)
         ck_assert_int_eq(buf[i], 0x10);
 
-    free(sim);
+    free(smallsim);
 }
 END_TEST
 
