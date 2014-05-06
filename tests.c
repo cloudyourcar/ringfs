@@ -60,6 +60,8 @@ START_TEST(test_flashsim)
 }
 END_TEST
 
+/* Flash simulator + MTD partition fixture. */
+
 static struct flashsim *sim;
 
 static int op_sector_erase(int address)
@@ -90,10 +92,22 @@ static const struct ringfs_flash_partition flash = {
     .read = op_read,
 };
 
+static void fixture_flashsim_setup(void)
+{
+    sim = flashsim_open("ringfs_format.sim", 65536*16, 65536);
+}
+
+static void fixture_flashsim_teardown(void)
+{
+    flashsim_close(sim);
+    sim = NULL;
+}
+
+/* RingFS tests. */
+
 START_TEST(test_ringfs_format)
 {
     printf("# test_ringfs_format\n");
-    sim = flashsim_open("ringfs_format.sim", 65536*16, 65536);
 
     struct ringfs fs1;
     printf("## ringfs_init()\n");
@@ -106,7 +120,6 @@ END_TEST
 START_TEST(test_ringfs_scan)
 {
     printf("# test_ringfs_scan\n");
-    sim = flashsim_open("ringfs_scan.sim", 65536*16, 65536);
 
     /* first format a filesystem */
     struct ringfs fs1;
@@ -155,7 +168,6 @@ END_TEST
 START_TEST(test_ringfs_append)
 {
     printf("# test_ringfs_append\n");
-    sim = flashsim_open("ringfs_append.sim", 65536*16, 65536);
 
     /* first format a filesystem */
     struct ringfs fs;
@@ -202,7 +214,6 @@ END_TEST
 START_TEST(test_ringfs_discard)
 {
     printf("# test_ringfs_discard\n");
-    sim = flashsim_open("ringfs_discard.sim", 65536*16, 65536);
 
     struct ringfs fs;
     printf("## ringfs_init()\n");
@@ -246,7 +257,6 @@ END_TEST
 START_TEST(test_ringfs_capacity)
 {
     printf("# test_ringfs_capacity\n");
-    sim = flashsim_open("ringfs_capacity.sim", 65536*16, 65536);
 
     struct ringfs fs;
     ringfs_init(&fs, &flash, 0x00000042, 4);
@@ -260,7 +270,6 @@ END_TEST
 START_TEST(test_ringfs_count)
 {
     printf("# test_ringfs_count\n");
-    sim = flashsim_open("ringfs_count.sim", 65536*16, 65536);
 
     int obj;
     struct ringfs fs;
@@ -334,6 +343,7 @@ Suite *ringfs_suite(void)
     suite_add_tcase(s, tc);
 
     tc = tcase_create("ringfs");
+    tcase_add_checked_fixture(tc, fixture_flashsim_setup, fixture_flashsim_teardown);
     tcase_add_test(tc, test_ringfs_format);
     tcase_add_test(tc, test_ringfs_scan);
     tcase_add_test(tc, test_ringfs_append);
