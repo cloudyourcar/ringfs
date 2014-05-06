@@ -112,7 +112,7 @@ typedef int object_t;
 #define SECTOR_HEADER_SIZE 8
 #define SLOT_HEADER_SIZE 4
 
-static inline void assert_loc_equiv_to_offset(const struct ringfs *fs, const struct ringfs_loc *loc, int offset)
+static void assert_loc_equiv_to_offset(const struct ringfs *fs, const struct ringfs_loc *loc, int offset)
 {
     int loc_offset = loc->sector * fs->slots_per_sector + loc->slot;
     ck_assert_int_eq(offset, loc_offset);
