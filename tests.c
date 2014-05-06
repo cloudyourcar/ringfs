@@ -82,10 +82,15 @@ static ssize_t op_read(int address, void *data, size_t size)
     return size;
 }
 
+/*
+ * A really small filesystem: 3 slots per sector, 15 slots total.
+ * Has the benefit of causing frequent wraparounds, potentially finding
+ * more bugs.
+ */
 static const struct ringfs_flash_partition flash = {
-    .sector_size = 65536,
-    .sector_offset = 3,
-    .sector_count = 13,
+    .sector_size = 32,
+    .sector_offset = 4,
+    .sector_count = 6,
 
     .sector_erase = op_sector_erase,
     .program = op_program,
@@ -329,7 +334,7 @@ START_TEST(test_ringfs_count)
     ck_assert_int_eq(ringfs_count_estimate(&fs), 9);
 
     printf("## fill the segment\n");
-    int count = fs.slots_per_sector - 4;
+    int count = fs.slots_per_sector - 1;
     for (int i=0; i<count; i++)
         ringfs_append(&fs, (int[]) { 0x42 });
     ck_assert_int_eq(ringfs_count_exact(&fs), 9+count);
