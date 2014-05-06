@@ -348,6 +348,38 @@ START_TEST(test_ringfs_count)
 }
 END_TEST
 
+START_TEST(test_ringfs_overflow)
+{
+    printf("# test_ringfs_overflow\n");
+
+    printf("## format\n");
+    struct ringfs fs;
+    ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
+    ringfs_format(&fs);
+
+    int capacity = ringfs_capacity(&fs);
+
+    printf("## fill filesystem to the brim\n");
+    for (int i=0; i<capacity; i++)
+        ringfs_append(&fs, (int[]) { i });
+    ck_assert_int_eq(ringfs_count_exact(&fs), capacity);
+
+    /* won't hurt to stress it a little bit! */
+    for (int round=0; round<3; round++) {
+        printf("## add one more object\n");
+        ringfs_append(&fs, (int[]) { 0x42 });
+        /* should kill one entire sector to make space */
+        ck_assert_int_eq(ringfs_count_exact(&fs), capacity - fs.slots_per_sector + 1);
+
+        printf("## fill back up to the sector capacity\n");
+        for (int i=0; i<fs.slots_per_sector-1; i++)
+            ringfs_append(&fs, (int[]) { i });
+
+        ck_assert_int_eq(ringfs_count_exact(&fs), capacity);
+    }
+}
+END_TEST
+
 Suite *ringfs_suite(void)
 {
     Suite *s = suite_create ("ringfs");
@@ -365,6 +397,7 @@ Suite *ringfs_suite(void)
     tcase_add_test(tc, test_ringfs_discard);
     tcase_add_test(tc, test_ringfs_capacity);
     tcase_add_test(tc, test_ringfs_count);
+    tcase_add_test(tc, test_ringfs_overflow);
     suite_add_tcase(s, tc);
 
     return s;
