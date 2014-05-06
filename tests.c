@@ -123,6 +123,17 @@ static void assert_loc_equiv_to_offset(const struct ringfs *fs, const struct rin
     ck_assert_int_eq(offset, loc_offset);
 }
 
+static void assert_scan_integrity(const struct ringfs *fs)
+{
+    struct ringfs newfs;
+    ringfs_init(&newfs, fs->flash, fs->version, fs->object_size);
+    ck_assert(ringfs_scan(&newfs) == 0);
+    ck_assert_int_eq(newfs.read.sector, fs->read.sector);
+    ck_assert_int_eq(newfs.read.slot, fs->read.slot);
+    ck_assert_int_eq(newfs.write.sector, fs->write.sector);
+    ck_assert_int_eq(newfs.write.slot, fs->write.slot);
+}
+
 START_TEST(test_ringfs_format)
 {
     printf("# test_ringfs_format\n");
@@ -198,6 +209,7 @@ START_TEST(test_ringfs_append)
 
         /* make sure the write head has advanced */
         assert_loc_equiv_to_offset(&fs, &fs.write, i+1);
+        assert_scan_integrity(&fs);
     }
 
     /* now we fetch at it. */
@@ -240,6 +252,7 @@ START_TEST(test_ringfs_discard)
     for (int i=0; i<4; i++) {
         printf("## ringfs_append()\n");
         ringfs_append(&fs, (int[]) { 0x11*(i+1) });
+        assert_scan_integrity(&fs);
     }
     /* read some of them */
     int obj;
@@ -250,6 +263,7 @@ START_TEST(test_ringfs_discard)
     }
     /* discard whatever was read */
     ck_assert(ringfs_discard(&fs) == 0);
+    assert_scan_integrity(&fs);
     /* make sure we're consistent */
     assert_loc_equiv_to_offset(&fs, &fs.read, 2);
     assert_loc_equiv_to_offset(&fs, &fs.cursor, 2);
@@ -266,6 +280,7 @@ START_TEST(test_ringfs_discard)
     assert_loc_equiv_to_offset(&fs, &fs.read, 4);
     assert_loc_equiv_to_offset(&fs, &fs.cursor, 4);
     assert_loc_equiv_to_offset(&fs, &fs.write, 4);
+    assert_scan_integrity(&fs);
 }
 END_TEST
 
@@ -363,6 +378,7 @@ START_TEST(test_ringfs_overflow)
     for (int i=0; i<capacity; i++)
         ringfs_append(&fs, (int[]) { i });
     ck_assert_int_eq(ringfs_count_exact(&fs), capacity);
+    assert_scan_integrity(&fs);
 
     /* won't hurt to stress it a little bit! */
     for (int round=0; round<3; round++) {
@@ -370,12 +386,14 @@ START_TEST(test_ringfs_overflow)
         ringfs_append(&fs, (int[]) { 0x42 });
         /* should kill one entire sector to make space */
         ck_assert_int_eq(ringfs_count_exact(&fs), capacity - fs.slots_per_sector + 1);
+        assert_scan_integrity(&fs);
 
         printf("## fill back up to the sector capacity\n");
         for (int i=0; i<fs.slots_per_sector-1; i++)
             ringfs_append(&fs, (int[]) { i });
 
         ck_assert_int_eq(ringfs_count_exact(&fs), capacity);
+        assert_scan_integrity(&fs);
     }
 }
 END_TEST
