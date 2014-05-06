@@ -112,6 +112,12 @@ typedef int object_t;
 #define SECTOR_HEADER_SIZE 8
 #define SLOT_HEADER_SIZE 4
 
+static inline void assert_loc_equiv_to_offset(const struct ringfs *fs, const struct ringfs_loc *loc, int offset)
+{
+    int loc_offset = loc->sector * fs->slots_per_sector + loc->slot;
+    ck_assert_int_eq(offset, loc_offset);
+}
+
 START_TEST(test_ringfs_format)
 {
     printf("# test_ringfs_format\n");
@@ -144,12 +150,9 @@ START_TEST(test_ringfs_scan)
 
     /* this is an empty FS, should start with this: */
     ck_assert_int_eq(fs2.slots_per_sector, (flash.sector_size-SECTOR_HEADER_SIZE)/(SLOT_HEADER_SIZE+sizeof(object_t)));
-    ck_assert_int_eq(fs2.read.sector, 0);
-    ck_assert_int_eq(fs2.read.slot, 0);
-    ck_assert_int_eq(fs2.write.sector, 0);
-    ck_assert_int_eq(fs2.write.slot, 0);
-    ck_assert_int_eq(fs2.cursor.sector, 0);
-    ck_assert_int_eq(fs2.cursor.slot, 0);
+    assert_loc_equiv_to_offset(&fs2, &fs2.read, 0);
+    assert_loc_equiv_to_offset(&fs2, &fs2.cursor, 0);
+    assert_loc_equiv_to_offset(&fs2, &fs2.write, 0);
 
     /* now insert some objects */
     ck_assert(ringfs_append(&fs2, (int[]) { 0x11 }) == 0);
@@ -189,7 +192,7 @@ START_TEST(test_ringfs_append)
         ringfs_append(&fs, (int[]) { 0x11*(i+1) });
 
         /* make sure the write head has advanced */
-        ck_assert_int_eq(fs.write.slot, i+1);
+        assert_loc_equiv_to_offset(&fs, &fs.write, i+1);
     }
 
     /* now we fetch at it. */
@@ -200,14 +203,14 @@ START_TEST(test_ringfs_append)
         ck_assert_int_eq(obj, 0x11*(i+1));
 
         /* make sure the cursor head has advanced */
-        ck_assert_int_eq(fs.cursor.slot, i+1);
+        assert_loc_equiv_to_offset(&fs, &fs.cursor, i+1);
     }
     /* there should be no data left */
     ck_assert(ringfs_fetch(&fs, &obj) < 0);
 
     /* test the rewind. */
     ck_assert(ringfs_rewind(&fs) == 0);
-    ck_assert_int_eq(fs.cursor.slot, 0);
+    assert_loc_equiv_to_offset(&fs, &fs.cursor, 0);
 
     /* try to read the objects once again. */
     for (int i=0; i<3; i++) {
@@ -243,9 +246,9 @@ START_TEST(test_ringfs_discard)
     /* discard whatever was read */
     ck_assert(ringfs_discard(&fs) == 0);
     /* make sure we're consistent */
-    ck_assert_int_eq(fs.read.slot, 2);
-    ck_assert_int_eq(fs.cursor.slot, 2);
-    ck_assert_int_eq(fs.write.slot, 4);
+    assert_loc_equiv_to_offset(&fs, &fs.read, 2);
+    assert_loc_equiv_to_offset(&fs, &fs.cursor, 2);
+    assert_loc_equiv_to_offset(&fs, &fs.write, 4);
 
     /* read the rest of the records */
     for (int i=2; i<4; i++) {
@@ -255,9 +258,9 @@ START_TEST(test_ringfs_discard)
     }
     /* discard them */
     ck_assert(ringfs_discard(&fs) == 0);
-    ck_assert_int_eq(fs.read.slot, 4);
-    ck_assert_int_eq(fs.cursor.slot, 4);
-    ck_assert_int_eq(fs.write.slot, 4);
+    assert_loc_equiv_to_offset(&fs, &fs.read, 4);
+    assert_loc_equiv_to_offset(&fs, &fs.cursor, 4);
+    assert_loc_equiv_to_offset(&fs, &fs.write, 4);
 }
 END_TEST
 
