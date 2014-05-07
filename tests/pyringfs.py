@@ -89,12 +89,39 @@ class RingFS(object):
         self.ringfs = StructRingFS()
         self.flash = flash.struct
         self.libringfs.ringfs_init(byref(self.ringfs), byref(self.flash), version, object_size)
+        self.object_size = object_size
 
     def format(self):
         self.libringfs.ringfs_format(byref(self.ringfs))
 
+    def scan(self):
+        return self.libringfs.ringfs_scan(byref(self.ringfs))
+
+    def capacity(self):
+        return self.libringfs.ringfs_capacity(byref(self.ringfs))
+
+    def count_estimate(self):
+        return self.libringfs.ringfs_count_estimate(byref(self.ringfs))
+
+    def count_exact(self):
+        return self.libringfs.ringfs_count_exact(byref(self.ringfs))
+
     def append(self, obj):
         self.libringfs.ringfs_append(byref(self.ringfs), obj)
+
+    def fetch(self):
+        obj = create_string_buffer(self.object_size)
+        self.libringfs.ringfs_append(byref(self.ringfs), obj)
+        return obj.raw
+
+    def discard(self):
+        self.libringfs.ringfs_discard(byref(self.ringfs))
+
+    def rewind(self):
+        self.libringfs.ringfs_rewind(byref(self.ringfs))
+
+    def dump(self):
+        self.libringfs.ringfs_dump(byref(self.ringfs))
 
 __all__ = [
     'StructRingFSFlashPartition',
