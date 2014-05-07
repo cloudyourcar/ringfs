@@ -196,11 +196,22 @@ START_TEST(test_ringfs_append)
     printf("# test_ringfs_append\n");
 
     /* first format a filesystem */
+    int obj;
     struct ringfs fs;
     printf("## ringfs_init()\n");
     ringfs_init(&fs, &flash, DEFAULT_VERSION, sizeof(object_t));
     printf("## ringfs_format()\n");
     ringfs_format(&fs);
+
+    /* fetches before appends should not change anything */
+    for (int i=0; i<3; i++) {
+        printf("## ringfs_fetch()\n");
+        ck_assert(ringfs_fetch(&fs, &obj) < 0);
+    }
+    assert_loc_equiv_to_offset(&fs, &fs.read, 0);
+    assert_loc_equiv_to_offset(&fs, &fs.write, 0);
+    assert_loc_equiv_to_offset(&fs, &fs.cursor, 0);
+    assert_scan_integrity(&fs);
 
     /* now we're brave and we write some data */
     for (int i=0; i<3; i++) {
@@ -213,7 +224,6 @@ START_TEST(test_ringfs_append)
     }
 
     /* now we fetch at it. */
-    int obj;
     for (int i=0; i<3; i++) {
         printf("## ringfs_fetch()\n");
         ck_assert(ringfs_fetch(&fs, &obj) == 0);
