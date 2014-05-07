@@ -55,7 +55,7 @@ class libringfs(GenericLibrary):
         ['ringfs_fetch', [POINTER(StructRingFS), c_void_p], c_int],
         ['ringfs_discard', [POINTER(StructRingFS)], c_int],
         ['ringfs_rewind', [POINTER(StructRingFS)], c_int],
-        ['ringfs_dump', [POINTER(StructRingFS)], None],
+        ['ringfs_dump', [c_void_p, POINTER(StructRingFS)], None],
     ]
 
 
@@ -121,7 +121,11 @@ class RingFS(object):
         self.libringfs.ringfs_rewind(byref(self.ringfs))
 
     def dump(self):
-        self.libringfs.ringfs_dump(byref(self.ringfs))
+        import ctypes
+        ctypes.pythonapi.PyFile_AsFile.argtypes= [ ctypes.py_object ]
+        ctypes.pythonapi.PyFile_AsFile.restype= ctypes.c_void_p
+        cstdout = ctypes.pythonapi.PyFile_AsFile(sys.stdout)
+        self.libringfs.ringfs_dump(cstdout, byref(self.ringfs))
 
 __all__ = [
     'StructRingFSFlashPartition',
