@@ -93,6 +93,8 @@ class RingFS(object):
     def format(self):
         self.libringfs.ringfs_format(byref(self.ringfs))
 
+    def append(self, obj):
+        self.libringfs.ringfs_append(byref(self.ringfs), obj)
 
 __all__ = [
     'StructRingFSFlashPartition',
