@@ -29,7 +29,7 @@ class FuzzRun(object):
 
         self.flash = RingFSFlashPartition(sector_size, sector_offset, sector_count,
                 op_sector_erase, op_program, op_read)
-        self.fs = RingFS(self.flash, version, object_size)
+        self.fs = RingFS(self.flash, self.version, self.object_size)
 
     def run(self):
 
@@ -51,6 +51,14 @@ class FuzzRun(object):
             fun = random.choice([do_append]*100 + [do_fetch]*100 + [do_rewind]*10 + [do_discard]*10)
             print i, fun.__name__
             fun()
+
+            # consistency check
+            newfs = RingFS(self.flash, self.version, self.object_size)
+            assert newfs.scan() == 0
+            assert newfs.ringfs.read.sector == self.fs.ringfs.read.sector
+            assert newfs.ringfs.read.slot == self.fs.ringfs.read.slot
+            assert newfs.ringfs.write.sector == self.fs.ringfs.write.sector
+            assert newfs.ringfs.write.slot == self.fs.ringfs.write.slot
 
 
 f = FuzzRun('tests/fuzzer.sim', 0x42, 16, 1024, 16, 0, 16)
