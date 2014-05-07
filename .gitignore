@@ -1,4 +1,7 @@
 *.o
+*.so
+*.pyc
+*.pyo
 *~
 *.bak
 *.diff
