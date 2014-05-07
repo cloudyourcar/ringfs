@@ -4,7 +4,7 @@
 # the terms of the Do What The Fuck You Want To Public License, Version 2, as
 # published by Sam Hocevar. See the COPYING file for more details.
 
-CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I. -Itests -DFLASHSIM_LOG
+CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I. -Itests
 LDLIBS = -lcheck
 
 all: scan-build test example
