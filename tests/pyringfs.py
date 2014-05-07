@@ -72,8 +72,8 @@ class RingFSFlashPartition(object):
             return size
 
         def op_read(address, buf, size):
-            buf = create_string_buffer(size)
-            buf.raw = read(address, buf, size)
+            data = read(address, size)
+            memmove(buf, data, size)
             return size
 
         self.struct = StructRingFSFlashPartition(sector_size, sector_offset, sector_count,
