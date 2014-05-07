@@ -48,7 +48,7 @@ void flashsim_close(struct flashsim *sim)
 
 void flashsim_sector_erase(struct flashsim *sim, int addr)
 {
-    int sector_start = addr & ~(sim->sector_size - 1);
+    int sector_start = addr - (addr % sim->sector_size);
     logprintf("flashsim_erase  (0x%08x) * erasing sector at 0x%08x\n", addr, sector_start);
 
     void *empty = malloc(sim->sector_size);
