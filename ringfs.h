@@ -32,7 +32,7 @@ struct ringfs_flash_partition
      * @param address Any address inside the sector.
      * @returns Zero on success, -1 on failure.
      */
-    int (*sector_erase)(int address);
+    int (*sector_erase)(struct ringfs_flash_partition *flash, int address);
     /**
      * Program flash memory bits by toggling them from 1 to 0.
      * @param address Start address, in bytes.
@@ -40,7 +40,7 @@ struct ringfs_flash_partition
      * @param size Size of data.
      * @returns size on success, -1 on failure.
      */
-    ssize_t (*program)(int address, const void *data, size_t size);
+    ssize_t (*program)(struct ringfs_flash_partition *flash, int address, const void *data, size_t size);
     /**
      * Read flash memory.
      * @param address Start address, in bytes.
@@ -48,7 +48,7 @@ struct ringfs_flash_partition
      * @param size Size of data.
      * @returns size on success, -1 on failure.
      */
-    ssize_t (*read)(int address, void *data, size_t size);
+    ssize_t (*read)(struct ringfs_flash_partition *flash, int address, void *data, size_t size);
 };
 
 /** @private */
@@ -63,7 +63,7 @@ struct ringfs_loc {
  * */
 struct ringfs {
     /* Constant values, set once at ringfs_init(). */
-    const struct ringfs_flash_partition *flash;
+    struct ringfs_flash_partition *flash;
     uint32_t version;
     int object_size;
     /* Cached values. */
@@ -86,7 +86,7 @@ struct ringfs {
  * @param object_size Size of one stored object, in bytes.
  * @returns Zero on success, -1 on failure.
  */
-int ringfs_init(struct ringfs *fs, const struct ringfs_flash_partition *flash, uint32_t version, int object_size);
+int ringfs_init(struct ringfs *fs, struct ringfs_flash_partition *flash, uint32_t version, int object_size);
 
 /**
  * Format the flash memory.

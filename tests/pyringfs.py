@@ -7,21 +7,23 @@ from sharedlibrary import GenericLibrary
 from ctypes import *
 
 
-op_sector_erase_t = CFUNCTYPE(c_int, c_int)
-op_program_t = CFUNCTYPE(c_ssize_t, c_int, c_void_p, c_size_t)
-op_read_t = CFUNCTYPE(c_ssize_t, c_int, c_void_p, c_size_t)
-
-
+# forward declaration
 class StructRingFSFlashPartition(Structure):
-    _fields_ = [
-        ('sector_size', c_int),
-        ('sector_offset', c_int),
-        ('sector_count', c_int),
+    pass
 
-        ('sector_erase', op_sector_erase_t),
-        ('program', op_program_t),
-        ('read', op_read_t),
-    ]
+op_sector_erase_t = CFUNCTYPE(c_int, POINTER(StructRingFSFlashPartition), c_int)
+op_program_t = CFUNCTYPE(c_ssize_t, POINTER(StructRingFSFlashPartition), c_int, c_void_p, c_size_t)
+op_read_t = CFUNCTYPE(c_ssize_t, POINTER(StructRingFSFlashPartition), c_int, c_void_p, c_size_t)
+
+StructRingFSFlashPartition._fields_ = [
+    ('sector_size', c_int),
+    ('sector_offset', c_int),
+    ('sector_count', c_int),
+
+    ('sector_erase', op_sector_erase_t),
+    ('program', op_program_t),
+    ('read', op_read_t),
+]
 
 class StructRingFSLoc(Structure):
     _fields_ = [
@@ -63,16 +65,16 @@ class RingFSFlashPartition(object):
 
     def __init__(self, sector_size, sector_offset, sector_count, sector_erase, program, read):
 
-        def op_sector_erase(address):
-            sector_erase(address)
+        def op_sector_erase(flash, address):
+            sector_erase(flash, address)
             return 0
 
-        def op_program(address, data, size):
-            program(address, string_at(data, size))
+        def op_program(flash, address, data, size):
+            program(flash, address, string_at(data, size))
             return size
 
-        def op_read(address, buf, size):
-            data = read(address, size)
+        def op_read(flash, address, buf, size):
+            data = read(flash, address, size)
             memmove(buf, data, size)
             return size
 

@@ -45,13 +45,15 @@ static int _sector_address(struct ringfs *fs, int sector_offset)
 
 static int _sector_get_status(struct ringfs *fs, int sector, uint32_t *status)
 {
-    return fs->flash->read(_sector_address(fs, sector) + offsetof(struct sector_header, status),
+    return fs->flash->read(fs->flash,
+            _sector_address(fs, sector) + offsetof(struct sector_header, status),
             status, sizeof(*status));
 }
 
 static int _sector_set_status(struct ringfs *fs, int sector, uint32_t status)
 {
-    return fs->flash->program(_sector_address(fs, sector) + offsetof(struct sector_header, status),
+    return fs->flash->program(fs->flash,
+            _sector_address(fs, sector) + offsetof(struct sector_header, status),
             &status, sizeof(status));
 }
 
@@ -59,8 +61,10 @@ static int _sector_free(struct ringfs *fs, int sector)
 {
     int sector_addr = _sector_address(fs, sector);
     _sector_set_status(fs, sector, SECTOR_ERASING);
-    fs->flash->sector_erase(sector_addr);
-    fs->flash->program(sector_addr + offsetof(struct sector_header, version), &fs->version, sizeof(fs->version));
+    fs->flash->sector_erase(fs->flash, sector_addr);
+    fs->flash->program(fs->flash,
+            sector_addr + offsetof(struct sector_header, version),
+            &fs->version, sizeof(fs->version));
     _sector_set_status(fs, sector, SECTOR_FREE);
     return 0;
 }
@@ -91,13 +95,15 @@ static int _slot_address(struct ringfs *fs, struct ringfs_loc *loc)
 
 static int _slot_get_status(struct ringfs *fs, struct ringfs_loc *loc, uint32_t *status)
 {
-    return fs->flash->read(_slot_address(fs, loc) + offsetof(struct slot_header, status),
+    return fs->flash->read(fs->flash,
+            _slot_address(fs, loc) + offsetof(struct slot_header, status),
             status, sizeof(*status));
 }
 
 static int _slot_set_status(struct ringfs *fs, struct ringfs_loc *loc, uint32_t status)
 {
-    return fs->flash->program(_slot_address(fs, loc) + offsetof(struct slot_header, status),
+    return fs->flash->program(fs->flash, 
+            _slot_address(fs, loc) + offsetof(struct slot_header, status),
             &status, sizeof(status));
 }
 
@@ -135,7 +141,7 @@ static void _loc_advance_slot(struct ringfs *fs, struct ringfs_loc *loc)
 
 /* And here we go. */
 
-int ringfs_init(struct ringfs *fs, const struct ringfs_flash_partition *flash, uint32_t version, int object_size)
+int ringfs_init(struct ringfs *fs, struct ringfs_flash_partition *flash, uint32_t version, int object_size)
 {
     /* Copy arguments to instance. */
     fs->flash = flash;
@@ -190,7 +196,7 @@ int ringfs_scan(struct ringfs *fs)
 
         /* Read sector header. */
         struct sector_header header;
-        fs->flash->read(addr, &header, sizeof(header));
+        fs->flash->read(fs->flash, addr, &header, sizeof(header));
 
         /* Detect partially-formatted partitions. */
         if (header.status == SECTOR_FORMATTING) {
@@ -351,7 +357,8 @@ int ringfs_append(struct ringfs *fs, const void *object)
     _slot_set_status(fs, &fs->write, SLOT_RESERVED);
 
     /* Write object. */
-    fs->flash->program(_slot_address(fs, &fs->write) + sizeof(struct slot_header),
+    fs->flash->program(fs->flash,
+            _slot_address(fs, &fs->write) + sizeof(struct slot_header),
             object, fs->object_size);
 
     /* Commit write. */
@@ -372,7 +379,8 @@ int ringfs_fetch(struct ringfs *fs, void *object)
         _slot_get_status(fs, &fs->cursor, &status);
 
         if (status == SLOT_VALID) {
-            fs->flash->read(_slot_address(fs, &fs->cursor) + sizeof(struct slot_header),
+            fs->flash->read(fs->flash,
+                    _slot_address(fs, &fs->cursor) + sizeof(struct slot_header),
                     object, fs->object_size);
             _loc_advance_slot(fs, &fs->cursor);
             return 0;
@@ -414,7 +422,7 @@ void ringfs_dump(FILE *stream, struct ringfs *fs)
 
         /* Read sector header. */
         struct sector_header header;
-        fs->flash->read(addr, &header, sizeof(header));
+        fs->flash->read(fs->flash, addr, &header, sizeof(header));
 
         switch (header.status) {
             case SECTOR_ERASED: description = "ERASED"; break;

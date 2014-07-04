@@ -64,20 +64,23 @@ END_TEST
 
 static struct flashsim *sim;
 
-static int op_sector_erase(int address)
+static int op_sector_erase(struct ringfs_flash_partition *flash, int address)
 {
+    (void) flash;
     flashsim_sector_erase(sim, address);
     return 0;
 }
 
-static ssize_t op_program(int address, const void *data, size_t size)
+static ssize_t op_program(struct ringfs_flash_partition *flash, int address, const void *data, size_t size)
 {
+    (void) flash;
     flashsim_program(sim, address, data, size);
     return size;
 }
 
-static ssize_t op_read(int address, void *data, size_t size)
+static ssize_t op_read(struct ringfs_flash_partition *flash, int address, void *data, size_t size)
 {
+    (void) flash;
     flashsim_read(sim, address, data, size);
     return size;
 }
@@ -87,7 +90,7 @@ static ssize_t op_read(int address, void *data, size_t size)
  * Has the benefit of causing frequent wraparounds, potentially finding
  * more bugs.
  */
-static const struct ringfs_flash_partition flash = {
+static struct ringfs_flash_partition flash = {
     .sector_size = 32,
     .sector_offset = 4,
     .sector_count = 6,

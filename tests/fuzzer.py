@@ -22,15 +22,15 @@ class FuzzRun(object):
 
         sim = FlashSim(name, total_sectors*sector_size, sector_size)
 
-        def op_sector_erase(address):
+        def op_sector_erase(flash, address):
             sim.sector_erase(address)
             return 0
 
-        def op_program(address, data):
+        def op_program(flash, address, data):
             sim.program(address, data)
             return len(data)
 
-        def op_read(address, size):
+        def op_read(flash, address, size):
             return sim.read(address, size)
 
         self.version = version
