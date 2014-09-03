@@ -2,5 +2,15 @@ language: c
 compiler:
     - gcc
     - clang
-install: sudo apt-get install check
+before_install:
+    - if [ "$CC" == "gcc" ]; then
+          sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
+          sudo apt-get update -qq;
+      fi
+install:
+    - if [ "$CC" == "gcc" ]; then
+          sudo apt-get install -qq gcc-4.8;
+          export CC="gcc-4.8";
+      fi
+    - sudo apt-get install check
 script: make test
