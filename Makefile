@@ -6,6 +6,7 @@
 
 CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I. -Itests
 CFLAGS += -D_POSIX_C_SOURCE=200112L
+CFLAGS += -fPIC # needed due to our shared library shenanigans
 LDLIBS = -lcheck
 
 all: scan-build test example
