@@ -1,5 +1,7 @@
 # RingFS, a small Flash-based ring buffer.
 
+[![Build Status](https://travis-ci.org/cloudyourcar/ringfs.svg)](https://travis-ci.org/cloudyourcar/ringfs)
+
 RingFS is a persistent, Flash-based ring buffer designed for embedded software.
 It's aimed at storing non-critical data that can be expunged on the FIFO basis
 as needed. Typical uses include:
