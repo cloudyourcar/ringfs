@@ -156,6 +156,8 @@ int ringfs_fetch(struct ringfs *fs, void *object);
  */
 int ringfs_discard(struct ringfs *fs);
 
+int ringfs_item_discard(struct ringfs *fs);
+
 /**
  * Rewind the read cursor back to the oldest object.
  *

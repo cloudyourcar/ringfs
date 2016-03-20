@@ -402,6 +402,14 @@ int ringfs_discard(struct ringfs *fs)
     return 0;
 }
 
+int ringfs_item_discard(struct ringfs *fs)
+{
+        _slot_set_status(fs, &fs->read, SLOT_GARBAGE);
+        _loc_advance_slot(fs, &fs->read);
+
+    return 0;
+}
+
 int ringfs_rewind(struct ringfs *fs)
 {
     fs->cursor = fs->read;
