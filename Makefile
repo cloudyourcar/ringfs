@@ -5,7 +5,9 @@
 # published by Sam Hocevar. See the COPYING file for more details.
 
 CFLAGS = -g -Wall -Wextra -Werror -std=c99 -I. -Itests
-LDLIBS = -lcheck
+CFLAGS += -D_POSIX_C_SOURCE=200112L
+CFLAGS += -fPIC # needed due to our shared library shenanigans
+LDLIBS = -lcheck -lm -lpthread -lrt
 
 all: scan-build test example
 	@echo "+++ All good."""
