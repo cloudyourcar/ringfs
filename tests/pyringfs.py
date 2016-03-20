@@ -45,7 +45,7 @@ class StructRingFS(Structure):
 
 
 class libringfs(GenericLibrary):
-    dllname = 'ringfs.so'
+    dllname = './ringfs.so'
     functions = [
         ['ringfs_init', [POINTER(StructRingFS), POINTER(StructRingFSFlashPartition), c_uint32, c_int], c_int],
         ['ringfs_format', [POINTER(StructRingFS)], c_int],
